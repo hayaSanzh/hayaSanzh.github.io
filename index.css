@@ -136,6 +136,7 @@ h2 {
 .imgapi {
     width: 400px;
     height: 400px;
+    margin-top: 50px;
 }
 
 .titleapi {
@@ -307,3 +308,4 @@ h1 {
         height: 150px;
     }
 }
+
