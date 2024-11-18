@@ -41,7 +41,7 @@ const allData = () => {
 allData();
 const drawUI = (title, price, image, index) => {
     const item = document.createElement('div');
-    item.className = 'item col-md-4';
+    item.className = 'item col-md-4 col-xs-6';
     item.setAttribute('id', `item-${index}`);
     item.innerHTML = `
         <img class='imgapi' src='${image}' id='img-${index}'>
