@@ -15,9 +15,10 @@ let category = localStorage.getItem('selectedCategory');
 let dataGlobal = [];
 
 const allData = () => {
-    fetch('https://fakestoreapi.com/products')
+    fetch('/api/products')
         .then((res) => res.json())
         .then((data) => {
+            console.log(data);
             container.innerHTML = '';
             row.className = 'row';
             row.innerHTML = ``;
@@ -28,11 +29,12 @@ const allData = () => {
 
             for (let i = 0; i < data.length; i++) {
                 dataGlobal[i] = data[i];
+                console.log('!', typeof(data[i].category), category);
                 if (data[i].category === category || category === 'Main')
                     drawUI(
                         data[i].title,
                         data[i].price,
-                        data[i].image,
+                        data[i].images,
                         i
                     )
             }
@@ -61,19 +63,19 @@ mainBtn.addEventListener('click', () => {
     allData();
 });
 clothesBtn.addEventListener('click', () => {
-    category = "men's clothing";
+    category = "Clothes";
     allData();
 });
 electronicsBtn.addEventListener('click', () => {
-    category = "women's clothing";
+    category = "Electronics";
     allData();
 });
 furnitureBtn.addEventListener('click', () => {
-    category = 'electronics';
+    category = 'Furniture';
     allData();
 });
 shoesBtn.addEventListener('click', () => {
-    category = 'jewelery';
+    category = 'Shoes';
     allData();
 });
 
@@ -85,7 +87,7 @@ const cartUI = () => {
         const listItem = document.createElement('li');
         listItem.className = 'liCart';
         listItem.innerHTML = `
-            <img class='imgCart' src='${dataGlobal[id].image}'>
+            <img class='imgCart' src='${dataGlobal[id].images}'>
             <p><strong>${dataGlobal[id].title}</strong></p>
             <p>$${dataGlobal[id].price}</p>
         `;
